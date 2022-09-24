@@ -1,0 +1,35 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><img [src]="guitar.img_src" [alt]="guitar.name"></td>
+            <td>{{guitar.name}}</td>
+            <td>{{guitar.type}}</td>
+            <td>$ {{guitar.price}}</td>
+            <td>{{guitar.stock}}</td>
+        </tr>
+        <tr>
+            <td><img src="https://guitar.com/wp-content/uploads/2021/08/first-les-paul@1400x1050-696x522.jpg" alt=""></td>
+            <td>Les Paul</td>
+            <td>Guitarra</td>
+            <td>$300</td>
+            <td>87</td>
+        </tr>
+        <tr>
+            <td><img src="https://images.ctfassets.net/m8onsx4mm13s/4mZVDk6cnHFv0baWJAdttE/b6e1faa2dfea7ca4da91626c2ee2defe/__static.gibson.com_product-images_Epiphone_EPIKWM803_Vintage_Sunburst_P_DR100-VS1.jpg" alt=""></td>
+            <td>Epiphone DR-100</td>
+            <td>Guitarra</td>
+            <td>$300</td>
+            <td>55</td>
+        </tr>
+    </tbody>
+</table>
