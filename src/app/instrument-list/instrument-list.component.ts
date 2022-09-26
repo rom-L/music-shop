@@ -14,30 +14,72 @@ export class InstrumentListComponent implements OnInit {
       name: "Fender Stratocaster",
       type: "Guitarra",
       price: 500,
-      stock: true,
+      stock: 7,
       onSale: true,
+      quantity: 0,
     },
     {
       img_src: "https://guitar.com/wp-content/uploads/2021/08/first-les-paul@1400x1050-696x522.jpg",
       name: "Les Paul",
       type: "Guitarra",
       price: 300,
-      stock: false,
+      stock: 0,
       onSale: false,
+      quantity: 0,
     },
     {
       img_src: "https://images.ctfassets.net/m8onsx4mm13s/4mZVDk6cnHFv0baWJAdttE/b6e1faa2dfea7ca4da91626c2ee2defe/__static.gibson.com_product-images_Epiphone_EPIKWM803_Vintage_Sunburst_P_DR100-VS1.jpg",
       name: "Epiphone DR-100",
       type: "Guitarra",
       price: 500,
-      stock: true,
+      stock: 14,
       onSale: true,
+      quantity: 0,
+    },
+    {
+      img_src: "https://cdn.shopify.com/s/files/1/1387/1235/products/IMG_5659_2_1024x1024.jpg?v=1571401661",
+      name: "Fender Precision Bass",
+      type: "Bajo",
+      price: 500,
+      stock: 0,
+      onSale: false,
+      quantity: 0,
     },
   ];
-  
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  upQuantity(instrument: Instrument): void {
+    if (instrument.quantity < instrument.stock) {
+      instrument.quantity++;
+    }
+  }
+
+  downQuantity(instrument: Instrument): void {
+    if (instrument.quantity > 0) {
+      instrument.quantity--;
+    }
+  }
+
+  onChangeQuantity(event: any, instrument: Instrument): void {
+    //se chequea si el valor ingresado es mayor al stock actual o menor a 0
+    if (instrument.quantity > instrument.stock) {
+      instrument.quantity = instrument.stock;
+    } else if (instrument.quantity < 0) {
+      instrument.quantity = 0;
+    }
+  }
+
+  checkInputKeywords(event: any): void {
+    let keywords = ["e", "E", "-", "+"];
+
+    //si se ingresa un caracter que este en el arreglo 'keywords', se previene el default, provocando que la letra no se escriba en el input
+    if (keywords.includes(event.key)) {
+      event.preventDefault()
+    }
   }
 
 }

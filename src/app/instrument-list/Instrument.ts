@@ -3,6 +3,7 @@ export interface Instrument {
     name: string;
     type: string;
     price: number;
-    stock: boolean;
+    stock: number;
     onSale: boolean;
+    quantity: number;
 }

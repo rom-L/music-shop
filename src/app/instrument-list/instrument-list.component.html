@@ -6,16 +6,23 @@
             <th>Tipo</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Compra</th>
         </tr>
     </thead>
 
     <tbody>
         <tr *ngFor="let instrument of instruments" [ngClass]="{'on-sale': instrument.onSale}">
-            <td><img [src]="instrument.img_src" [alt]="instrument.name"></td>
+            <td><img [src]="instrument.img_src" [alt]="instrument.name" class="img-thumbnail"></td>
             <td>{{instrument.name}}</td>
             <td>{{instrument.type}}</td>
             <td>{{instrument.price | currency}}</td>
-            <td><span class="badge text-bg-danger" *ngIf="instrument.stock == false">SIN STOCK</span></td>
+            <td><span *ngIf="instrument.stock == 0" class="badge text-bg-danger">SIN STOCK</span></td>
+            <td *ngIf="instrument.stock > 0" id="botonera" class="d-flex">
+                <button class="btn btn-primary btn-sm" (click)="downQuantity(instrument)">-</button>
+                    <!--el input tiene 2 eventos: 'keyup', 'keydown'-->
+                    <input type="number" [(ngModel)]="instrument.quantity" (keyup)="onChangeQuantity($event, instrument)" (keydown)="checkInputKeywords($event)">
+                <button class="btn btn-primary btn-sm" (click)="upQuantity(instrument)">+</button>
+            </td>
         </tr>
     </tbody>
 </table>
