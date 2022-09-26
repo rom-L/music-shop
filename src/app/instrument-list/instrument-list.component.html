@@ -20,6 +20,7 @@
             <td *ngIf="instrument.stock > 0" id="botonera" class="d-flex">
                 <button class="btn btn-primary btn-sm" (click)="downQuantity(instrument)">-</button>
                     <!--el input tiene 2 eventos: 'keyup', 'keydown'-->
+                    <!--el [(ngModel)] del input hace two-way binding (se comunican HTML y TS)-->
                     <input type="number" [(ngModel)]="instrument.quantity" (keyup)="onChangeQuantity($event, instrument)" (keydown)="checkInputKeywords($event)">
                 <button class="btn btn-primary btn-sm" (click)="upQuantity(instrument)">+</button>
             </td>
