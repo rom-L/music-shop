@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { MusicShopAboutComponent } from './music-shop-about/music-shop-about.component';
 import { MusicShopInstrumentsComponent } from './music-shop-instruments/music-shop-instruments.component';
+import { InputQuantityComponent } from './input-quantity/input-quantity.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MusicShopInstrumentsComponent } from './music-shop-instruments/music-sh
     InstrumentListComponent,
     CartComponent,
     MusicShopAboutComponent,
-    MusicShopInstrumentsComponent
+    MusicShopInstrumentsComponent,
+    InputQuantityComponent
   ],
   imports: [
     BrowserModule,
