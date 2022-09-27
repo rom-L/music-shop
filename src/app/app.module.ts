@@ -6,11 +6,17 @@ import { AppComponent } from './app.component';
 import { InstrumentListComponent } from './instrument-list/instrument-list.component';
 
 import { FormsModule } from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
+import { MusicShopAboutComponent } from './music-shop-about/music-shop-about.component';
+import { MusicShopInstrumentsComponent } from './music-shop-instruments/music-shop-instruments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InstrumentListComponent
+    InstrumentListComponent,
+    CartComponent,
+    MusicShopAboutComponent,
+    MusicShopInstrumentsComponent
   ],
   imports: [
     BrowserModule,
