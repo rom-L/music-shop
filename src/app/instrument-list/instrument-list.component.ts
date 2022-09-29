@@ -52,34 +52,5 @@ export class InstrumentListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  upQuantity(instrument: Instrument): void {
-    if (instrument.quantity < instrument.stock) {
-      instrument.quantity++;
-    }
-  }
-
-  downQuantity(instrument: Instrument): void {
-    if (instrument.quantity > 0) {
-      instrument.quantity--;
-    }
-  }
-
-  onChangeQuantity(event: any, instrument: Instrument): void {
-    //se chequea si el valor ingresado es mayor al stock actual o menor a 0
-    if (instrument.quantity > instrument.stock) {
-      instrument.quantity = instrument.stock;
-    } else if (instrument.quantity < 0) {
-      instrument.quantity = 0;
-    }
-  }
-
-  checkInputKeywords(event: any): void {
-    let keywords = ["e", "E", "-", "+"];
-
-    //si se ingresa un caracter que este en el arreglo 'keywords', se previene el default, provocando que la letra no se escriba en el input
-    if (keywords.includes(event.key)) {
-      event.preventDefault()
-    }
-  }
 
 }

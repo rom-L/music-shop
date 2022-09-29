@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Instrument } from '../instrument-list/Instrument';
 
 @Component({
   selector: 'app-input-quantity',
@@ -9,7 +11,54 @@ export class InputQuantityComponent implements OnInit {
 
   constructor() { }
 
+  //con el @Input() recibe un valor de entrada desde el HTML, en este caso, [instrument]="instrument" que viene del *ngFor
+  @Input() quantity!: number;
+
+  @Input() max!: number;
+
+  //generamos nuestro propio evento con el eventemitter
+  @Output() quantityChange: EventEmitter<number> = new EventEmitter<number>();
+
+
+
   ngOnInit(): void {
   }
 
+
+  upQuantity(): void {
+    if (this.quantity < this.max) {
+      this.quantity++;
+
+      //cada vez que se cambia el valor de quantity se llama al evento, basicamente le dice el valor nuevo que va a tomar, y luego con el two way data binding se refreshea en la pag:
+      this.quantityChange.emit(this.quantity);
+    }
+  }
+
+  downQuantity(): void {
+    if (this.quantity > 0) {
+      this.quantity--;
+
+      this.quantityChange.emit(this.quantity);
+    }
+  }
+
+  onChangeQuantity(event: any): void {
+    //se chequea si el valor ingresado es mayor al stock actual o menor a 0
+    if (this.quantity > this.max) {
+      this.quantity = this.max;
+    } else if (this.quantity < 0) {
+      this.quantity = 0;
+    }
+
+    this.quantityChange.emit(this.quantity);
+  }
+
+  checkInputKeywords(event: any): void {
+    let keywords = ["e", "E", "-", "+"];
+
+    //si se ingresa un caracter que este en el arreglo 'keywords', se previene el default, provocando que la letra no se escriba en el input
+    if (keywords.includes(event.key)) {
+      event.preventDefault()
+    }
+  }
 }

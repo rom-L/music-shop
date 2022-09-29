@@ -19,12 +19,10 @@
             <td>{{instrument.type}}</td>
             <td>{{instrument.price | currency}}</td>
             <td><span *ngIf="instrument.stock == 0" class="badge text-bg-danger">SIN STOCK</span></td>
-            <td *ngIf="instrument.stock > 0" id="botonera" class="d-flex">
-                <button class="btn btn-primary btn-sm" (click)="downQuantity(instrument)">-</button>
-                    <!--el input tiene 2 eventos: 'keyup', 'keydown'-->
-                    <!--el [(ngModel)] del input hace two-way binding (se comunican HTML y TS)-->
-                    <input type="number" [(ngModel)]="instrument.quantity" (keyup)="onChangeQuantity($event, instrument)" (keydown)="checkInputKeywords($event)">
-                <button class="btn btn-primary btn-sm" (click)="upQuantity(instrument)">+</button>
+            <td *ngIf="instrument.stock > 0" id="botonera">
+                <!--se definen el quantity y el max en los atributos de la clase InputQuantityComponent-->
+                <!--NOTA: Input es con []; Output es con ()-->
+                <app-input-quantity [(quantity)]="instrument.quantity" [max]="instrument.stock" class="d-flex"></app-input-quantity>
             </td>
         </tr>
     </tbody>

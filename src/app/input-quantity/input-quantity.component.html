@@ -1,1 +1,5 @@
-<p>input-quantity works!</p>
+<button class="btn btn-primary btn-sm" (click)="downQuantity()">-</button>
+    <!--el input tiene 2 eventos: 'keyup', 'keydown'-->
+    <!--el [(ngModel)] del input hace two-way binding (se comunican HTML y TS)-->
+    <input type="number" [(ngModel)]="quantity" (keyup)="onChangeQuantity($event)" (keydown)="checkInputKeywords($event)">
+<button class="btn btn-primary btn-sm" (click)="upQuantity()">+</button>
