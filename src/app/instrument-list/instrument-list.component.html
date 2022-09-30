@@ -8,7 +8,8 @@
             <th>Tipo</th>
             <th>Precio</th>
             <th>Stock</th>
-            <th>Compra</th>
+            <th>Cantidad</th>
+            <th>Comprar</th>
         </tr>
     </thead>
 
@@ -22,8 +23,10 @@
             <td *ngIf="instrument.stock > 0" id="botonera">
                 <!--se definen el quantity y el max en los atributos de la clase InputQuantityComponent-->
                 <!--NOTA: Input es con []; Output es con ()-->
+                <!--NOTA: el [(quantity)] es two way data binding, por lo que tambien controla al instrument.quantity-->
                 <app-input-quantity [(quantity)]="instrument.quantity" [max]="instrument.stock" class="d-flex"></app-input-quantity>
             </td>
+            <td><button *ngIf="instrument.stock > 0" (click)="addToCart(instrument)" class="btn btn-primary">Comprar</button></td>
         </tr>
     </tbody>
 </table>

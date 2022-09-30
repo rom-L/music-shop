@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InstrumentCartService } from '../instrument-cart.service';
 import { Instrument } from './Instrument';
 
 @Component({
@@ -47,10 +48,23 @@ export class InstrumentListComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+
+              //se crea una variable private con la instancia del servicio, si ya existe no se instancia nuevamente, por lo que funciona como "singleton" entre los componentes
+  constructor(private cart: InstrumentCartService) { }
 
   ngOnInit(): void {
   }
 
 
+  addToCart(instrument: Instrument) {
+    if (instrument.stock > 0) {
+      //se llama a la funcion addToCart de la instancia cart con el instrumento como parametro
+      this.cart.addToCart(instrument);
+      
+      //luego de llamar a la funcion de arriba se le resta al stock la cantidad comprada
+      instrument.stock -= instrument.quantity;
+      instrument.quantity = 0;  //se pasa a 0 para la proxima compra
+    }
+    
+  }
 }

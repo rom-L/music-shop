@@ -16,7 +16,7 @@ export class InputQuantityComponent implements OnInit {
 
   @Input() max!: number;
 
-  //generamos nuestro propio evento con el eventemitter
+  //definimos nuestro propio evento con el eventemitter (cambia el valor de quantity ya que es quantityChange)
   @Output() quantityChange: EventEmitter<number> = new EventEmitter<number>();
 
 
@@ -29,7 +29,7 @@ export class InputQuantityComponent implements OnInit {
     if (this.quantity < this.max) {
       this.quantity++;
 
-      //cada vez que se cambia el valor de quantity se llama al evento, basicamente le dice el valor nuevo que va a tomar, y luego con el two way data binding se refreshea en la pag:
+      //avisamos cuando se tiene que firear el evento(cada vez que se cambia el valor de quantity se emite el evento):
       this.quantityChange.emit(this.quantity);
     }
   }

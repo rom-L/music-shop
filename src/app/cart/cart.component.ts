@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InstrumentCartService } from '../instrument-cart.service';
+import { Instrument } from '../instrument-list/Instrument';
 
 @Component({
   selector: 'app-cart',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  cartList: Instrument[] = [];
+
+  constructor(private cart: InstrumentCartService) {
+    //cada vez que el observable cambia, el cartList de CartComponent(esta clase) toma su valor
+    cart.cartList.subscribe(observable => {
+      this.cartList = observable;
+    });
+  }
 
   ngOnInit(): void {
   }
