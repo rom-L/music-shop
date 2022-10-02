@@ -21,4 +21,16 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  getTotalPrice(): number{
+    let totalPrice = 0;
+
+    if (this.cartList.length > 0) {
+      for (const instrument of this.cartList) {
+        totalPrice += (instrument.price * instrument.quantity);
+      }
+    }
+
+    return totalPrice;
+  }
 }
