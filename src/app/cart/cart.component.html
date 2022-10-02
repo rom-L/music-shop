@@ -1,1 +1,7 @@
 <h1>Carrito</h1>
+
+<ul class="list-group">
+    <li *ngFor="let instrument of cartList" class="list-group-item">
+        {{instrument.name}} || Cantidad: {{instrument.quantity}}
+    </li>
+</ul>
